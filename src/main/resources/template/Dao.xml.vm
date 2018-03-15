@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${package}.${moduleName}.dao.${className}Dao">
+
+    <resultMap type="${package}.${moduleName}.entity.${className}Entity" id="${classname}Map">
+		#foreach($column in $columns)
+            <result column="${column.columnName}" property="${column.attrname}" jdbcType="${column.dataTypeUpper}"/>
+		#end
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		#foreach($column in $columns)
+            ${column.columnName} #if($velocityCount != $columns.size()),#end
+        #end
+
+    </sql>
+    <!-- 工具自动生成-->
+    <insert id="save" parameterType="${package}.${moduleName}.entity.${className}Entity"#if($pk.extra =='auto_increment') useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
+        insert into ${tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            #foreach(${column} in ${columns})
+                #if(${column.columnName} != ${pk.columnName} || ${pk.extra} != 'auto_increment')
+                    <if test="${column.attrname} != null">
+                        ${column.columnName}#if(${velocityCount} != ${columns.size()}), #end
+                    </if>
+                #end
+            #end
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #foreach(${column} in ${columns})
+                #if(${column.columnName} != ${pk.columnName} || ${pk.extra} != 'auto_increment')
+                    <if test="${column.attrname} != null">
+                        #{${column.attrname},jdbcType=${column.dataTypeUpper}}#if(${velocityCount} != ${columns.size()}), #end
+                    </if>
+                #end
+            #end
+        </trim>
+    </insert>
+    <!-- 工具自动生成-->
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from ${tableName} where ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeUpper}}
+    </delete>
+    <!-- 工具自动生成-->
+    <delete id="deleteBatch">
+        delete from ${tableName} where ${pk.columnName} in
+        <foreach item="${pk.attrname}" collection="array" open="(" separator="," close=")">
+            #{${pk.attrname}}
+        </foreach>
+    </delete>
+    <!-- 工具自动生成-->
+    <update id="update" parameterType="${package}.${moduleName}.entity.${className}Entity">
+        update ${tableName}
+        <set>
+            #foreach($column in $columns)
+                #if($column.columnName != $pk.columnName)
+                    <if test="$column.attrname != null">
+                        $column.columnName = #{$column.attrname,jdbcType=${column.dataTypeUpper}}#if($velocityCount != $columns.size()), #end
+                    </if>
+                #end
+            #end
+        </set>
+        where ${pk.columnName} = #{${pk.attrname}}
+    </update>
+    <!-- 工具自动生成-->
+    <select id="queryObject" resultMap="${classname}Map" parameterType="java.lang.Long">
+        select
+		<include refid="Base_Column_List"/>
+		from ${tableName} where ${pk.columnName} = #{${pk.attrname}}
+    </select>
+    <!-- 工具自动生成-->
+    <select id="queryList" resultMap="${classname}Map">
+        select
+		<include refid="Base_Column_List"/>
+		from ${tableName}
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by ${pk.columnName} desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <!-- 工具自动生成-->
+    <select id="queryTotal" resultType="int">
+        select count(*) from ${tableName}
+    </select>
+
+</mapper>
