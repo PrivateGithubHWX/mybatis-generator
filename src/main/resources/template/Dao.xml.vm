@@ -6,7 +6,7 @@
 
     <resultMap type="${package}.${moduleName}.entity.${className}Entity" id="${classname}Map">
 		#foreach($column in $columns)
-            <result column="${column.columnName}" property="${column.attrname}" jdbcType="${column.dataTypeUpper}"/>
+            <result column="${column.columnName}" property="${column.attrname}"/>
 		#end
     </resultMap>
 
@@ -32,7 +32,7 @@
             #foreach(${column} in ${columns})
                 #if(${column.columnName} != ${pk.columnName} || ${pk.extra} != 'auto_increment')
                     <if test="${column.attrname} != null">
-                        #{${column.attrname},jdbcType=${column.dataTypeUpper}}#if(${velocityCount} != ${columns.size()}), #end
+                        #{${column.attrname}}#if(${velocityCount} != ${columns.size()}), #end
                     </if>
                 #end
             #end
@@ -40,7 +40,7 @@
     </insert>
     <!-- 工具自动生成-->
     <delete id="delete" parameterType="java.lang.Long">
-        delete from ${tableName} where ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeUpper}}
+        delete from ${tableName} where ${pk.columnName} = #{${pk.attrname}}
     </delete>
     <!-- 工具自动生成-->
     <delete id="deleteBatch">
@@ -56,7 +56,7 @@
             #foreach($column in $columns)
                 #if($column.columnName != $pk.columnName)
                     <if test="$column.attrname != null">
-                        $column.columnName = #{$column.attrname,jdbcType=${column.dataTypeUpper}}#if($velocityCount != $columns.size()), #end
+                        $column.columnName = #{$column.attrname}#if($velocityCount != $columns.size()), #end
                     </if>
                 #end
             #end
