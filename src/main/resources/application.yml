@@ -3,16 +3,16 @@ server:
     tomcat:
         max-threads: 10
         min-spare-threads: 10
-    port: 8083
+    port: 8084
 
 # mysql
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://test-us-pro.ctfbylwxpwpb.us-west-1.rds.amazonaws.com:3306/us_mgt?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
-        username: us_mgt
-        password: 6GevMiNrShZVscJf
+        url: jdbc:mysql://test-eu-pro.ctdu66pasxt1.eu-central-1.rds.amazonaws.com:3306/eu_test1_legalwallet?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+        username: eu_test1_legalwallet
+        password: raij5quah0Heejiv
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss

@@ -1,0 +1,14 @@
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/service/SysGeneratorService.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/Constant.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/RenrenApplication.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/controller/SysGeneratorController.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/dao/SysGeneratorDao.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/R.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/Query.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/DateUtils.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/PageUtils.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/entity/TableEntity.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/RRExceptionHandler.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/RRException.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/entity/ColumnEntity.java
+/Users/huangweixing/workspace/private_workspace/mybatis-generator/src/main/java/io/renren/utils/GenUtils.java
