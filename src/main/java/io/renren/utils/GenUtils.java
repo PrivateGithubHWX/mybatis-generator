@@ -55,7 +55,7 @@ public class GenUtils {
         tableEntity.setTableName(table.get("tableName" ));
         tableEntity.setComments(table.get("tableComment" ));
         //表名转换成Java类名
-        String className = tableToJava(tableEntity.getTableName(), config.getString("tablePrefix" ));
+        String className = tableToJava(tableEntity.getTableName(), config.getString("tablePrefix" )).substring(1);
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
 
@@ -76,7 +76,7 @@ public class GenUtils {
             columnEntity.setExtra(column.get("extra" ));
 
             //列名转换成Java属性名
-            String attrName = columnToJava(columnEntity.getColumnName());
+            String attrName = columnToJava(columnEntity.getColumnName()).substring(1);
             columnEntity.setAttrName(attrName);
             columnEntity.setAttrname(StringUtils.uncapitalize(attrName));
 
@@ -187,7 +187,7 @@ public class GenUtils {
         }
 
         if (template.contains("Dao.java.vm" )) {
-            return packagePath + "dao" + File.separator + className + "Dao.java";
+            return packagePath + "dao" + File.separator + className + "Mapper.java";
         }
 
         if (template.contains("Service.java.vm" )) {
@@ -203,7 +203,7 @@ public class GenUtils {
         }
 
         if (template.contains("Dao.xml.vm" )) {
-            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Dao.xml";
+            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
         }
 
         if (template.contains("list.html.vm" )) {

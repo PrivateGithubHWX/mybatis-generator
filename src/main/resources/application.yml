@@ -10,9 +10,9 @@ spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://test-us-pro.ctfbylwxpwpb.us-west-1.rds.amazonaws.com:3306/us_mgt?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
-        username: us_mgt
-        password: 6GevMiNrShZVscJf
+        url: jdbc:mysql://127.0.0.1:3306/huobi_cloud_ops?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: password
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss
