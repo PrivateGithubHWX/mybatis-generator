@@ -23,7 +23,8 @@ public class TableEntity {
 	private String className;
 	//类名(第一个字母小写)，如：sys_user => sysUser
 	private String classname;
-	
+	private String classnamessss;
+
 	public String getTableName() {
 		return tableName;
 	}
